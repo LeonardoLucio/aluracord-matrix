@@ -1,39 +1,9 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import appConfig from '../config.json';
 
 
-
-function GlobalStyle() {
-    
-  return (
-
-
-    <style global jsx>{`
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      body {
-        font-family: 'Open Sans', sans-serif;
-      }
-      /* App fit Height */ 
-      html, body, #__next {
-        min-height: 100vh;
-        display: flex;
-        flex: 1;
-      }
-      #__next {
-        flex: 1;
-      }
-      #__next > * {
-        flex: 1;
-      }
-      /* ./App fit Height */ 
-    `}</style>
-  );
-}
 
 function Titulo(props) {
   const Tag = props.tag || 'h1';
@@ -65,11 +35,13 @@ function Titulo(props) {
 // export default HomePage
 
 export default function PaginaInicial() {
-  const username = 'LeonardoLucio';
   
+  const [username, setUsername] = useState('LeonardoLucio');
+  const roteamento = useRouter();
+
   return (
     <>
-      <GlobalStyle />
+    
       <Box
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -96,6 +68,10 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function (e) {
+              e.preventDefault()
+              roteamento.push("/chat")
+            }}
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -106,7 +82,11 @@ export default function PaginaInicial() {
               {appConfig.name}
             </Text>
 
-            <TextField
+  
+             <TextField
+            value={username} 
+            onChange={(e) => setUsername(e.target.value) } 
+            placeholder='Digite seu usuario do GitHub'
               fullWidth
               textFieldColors={{
                 neutral: {
@@ -117,6 +97,7 @@ export default function PaginaInicial() {
                 },
               }}
             />
+            
             <Button
               type='submit'
               label='Entrar'
