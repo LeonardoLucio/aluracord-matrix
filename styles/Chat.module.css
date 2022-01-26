@@ -47,6 +47,10 @@
     border:none;
     border-radius: 10px;
 }
+.header button:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
 
 .message {
     width: 95%;
