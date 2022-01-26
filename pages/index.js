@@ -85,7 +85,12 @@ export default function PaginaInicial() {
   
              <TextField
             value={username} 
-            onChange={(e) => setUsername(e.target.value) } 
+            onChange={(e) => {
+              const valor = e.target.value
+             
+                setUsername(valor)
+              }
+            } 
             placeholder='Digite seu usuario do GitHub'
               fullWidth
               textFieldColors={{
