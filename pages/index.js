@@ -2,6 +2,7 @@ import { Box, Button, Text, TextField, Image } from '@skynexui/components';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import appConfig from '../config.json';
+import { urlObjectKeys } from 'next/dist/shared/lib/utils';
 
 
 
@@ -86,6 +87,7 @@ export default function PaginaInicial() {
              <TextField
             value={username} 
             onChange={(e) => {
+              console.log(Object.keys(e))
               const valor = e.target.value
              
                 setUsername(valor)
