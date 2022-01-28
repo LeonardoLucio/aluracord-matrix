@@ -69,9 +69,12 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
-            onSubmit={function (e) {
-              e.preventDefault()
-              roteamento.push("/chat")
+            onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              console.log('Alguém submeteu o form');
+              // roteamento.push('/chat?username=' + username);
+              roteamento.push(`/chat?username=${username}`);
+              // window.location.href = '/chat';
             }}
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
