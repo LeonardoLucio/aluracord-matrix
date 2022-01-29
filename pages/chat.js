@@ -249,7 +249,9 @@ function MessageList(props) {
             {/* Condicional: {mensagem.texto.startsWith(':sticker:').toString()} */}
             {mensagem.texto.startsWith(':sticker:')
               ? (
-                <Image src={mensagem.texto.replace(':sticker:', '')} />
+                <Image styleSheet={{
+                  width: '90px'
+                }} src={mensagem.texto.replace(':sticker:', '')} />
               )
               : (
                 mensagem.texto
